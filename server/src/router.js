@@ -11,7 +11,7 @@ router.post("/register", async (req, res) => {
   const id = crypto.randomUUID();
 
   try {
-    const myReq = (await db)
+    (await db)
       .query("SELECT * FROM users WHERE email = ?", [email])
       .then(async (data) => {
         if (data[0] < 1) {
@@ -25,7 +25,7 @@ router.post("/register", async (req, res) => {
               const token = jwt.sign({ id }, mySecretCode, {
                 expiresIn: "1h",
               });
-              res.json(token);
+              res.json({ log: true, token });
             }
           });
         } else {
@@ -57,6 +57,33 @@ router.get("/", verify, async (req, res) => {
       .then((ms) => res.json({ log: true, userInfo: ms[0] }));
   } catch (error) {
     res.json({ log: false, message: "Server error" });
+  }
+});
+
+router.post("/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    (await db)
+      .query("SELECT * FROM users WHERE email = ?", [email])
+      .then(async (data) => {
+        if (data[0].length < 1) {
+          res.json({ log: false, message: "Account not found" });
+        } else {
+          bcrypt.compare(password, data[0][0].password, (err, result) => {
+            if (err) return res.json({ err });
+            if (result) {
+              const token = jwt.sign({ id: data[0][0].id }, mySecretCode, {
+                expiresIn: "1h",
+              });
+              res.json({ log: true, token });
+            } else {
+              res.json({ log: false, message: "Wrong password" });
+            }
+          });
+        }
+      });
+  } catch (error) {
+    console.log(error);
   }
 });
 

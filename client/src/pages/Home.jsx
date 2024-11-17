@@ -18,6 +18,7 @@ function Home() {
       if(myReq.data.log == false){
         // navigate('/login')
         setLog(false)
+        localStorage.removeItem('token')
       }else{
         setInfo(myReq.data.userInfo[0])
         setLog(true)
