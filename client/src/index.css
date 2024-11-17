@@ -19,10 +19,11 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     background-color: #c2e2ff5f;
     padding: 2rem;
     gap: 2rem;
+    color: #8e8eff;
 }
 
 .reg .container h1{
@@ -64,12 +65,13 @@ body{
 
 .reg .container form .pass1 label,
 .reg .container form .pass2 label{
-    background-color: aquamarine;
+    background-color: #8e8eff;
     font-size: .8rem;
     padding: .3rem .5rem;
     border-radius: 20px;
     position: absolute;
     margin-right: .2rem;
+    color: #fff;
 }
 
 .reg .container form button{
@@ -79,4 +81,50 @@ body{
     outline: none;
     cursor: pointer;
     color: #fff;
+}
+
+.div-no{
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100svh;
+}
+
+.div-no .no-container{
+    background-color: #c2e2ff5f;
+    padding: 4rem 2rem;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color: #8e8eff;
+}
+
+.div-no .no-container .btns{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+    margin-top: 4rem;
+}
+
+.div-no .no-container .btns a{
+    /* border: 1px solid #000; */
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: .7rem 0;
+    text-decoration: none;
+    border-radius: .3rem;
+    color: #fff;
+}
+
+.div-no .no-container .btns .log{
+    background-color: #4bdd4b;
+}
+
+.div-no .no-container .btns .rg{
+    background-color: #8e8eff;
 }

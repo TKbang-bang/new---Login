@@ -40,10 +40,10 @@ router.post("/register", async (req, res) => {
 const verify = (req, res, next) => {
   const token = req.headers["authorization"].split(" ")[1];
   if (!token) {
-    return res.json("No token");
+    return res.json({ log: false, message: "No token" });
   } else {
     jwt.verify(token, mySecretCode, (err, data) => {
-      if (err) return res.json("Error token");
+      if (err) return res.json({ log: false, message: "Token error" });
       req.userID = data;
       next();
     });
@@ -52,11 +52,11 @@ const verify = (req, res, next) => {
 
 router.get("/", verify, async (req, res) => {
   try {
-    const myReq = (await db)
-      .query("SELECT * FROM users WHERE id = ?", [req.userID.id])
-      .then((ms) => console.log(ms));
+    (await db)
+      .query("SELECT id,name,email FROM users WHERE id = ?", [req.userID.id])
+      .then((ms) => res.json({ log: true, userInfo: ms[0] }));
   } catch (error) {
-    console.log(error);
+    res.json({ log: false, message: "Server error" });
   }
 });
 
