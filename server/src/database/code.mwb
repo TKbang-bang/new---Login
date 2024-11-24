@@ -5,3 +5,10 @@ CREATE TABLE IF NOT EXISTS users(
     password VARCHAR(100),
     PRIMARY KEY(id)
 );
+
+CREATE TABLE IF NOT EXISTS friend_requests(
+    request_id INT NOT NULL AUTO_INCREMENT,
+    from VARCHAR(200),
+    to VARCHAR(200),
+    PRIMARY KEY(request_id)
+);

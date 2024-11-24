@@ -1,130 +1,279 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #13134b5c;
 }
 
-.reg{
-    width: 100%;
-    height: 100svh;
-    display: grid;
-    place-items: center;
+.reg {
+  width: 100%;
+  height: 100svh;
+  display: grid;
+  place-items: center;
 }
 
-.reg .container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* border: 1px solid #000; */
-    background-color: #c2e2ff5f;
-    padding: 2rem;
-    gap: 2rem;
-    color: #8e8eff;
+.reg .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid #000; */
+  background-color: #c2e2ff5f;
+  padding: 2rem;
+  gap: 2rem;
+  color: #8e8eff;
 }
 
-.reg .container h1{
-    max-width: 15rem;
+.reg .container h1 {
+  max-width: 15rem;
 }
 
-.reg .container form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 1rem;
+.reg .container form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .reg .container form input,
 .reg .container form .pass1,
 .reg .container form .pass2,
-.reg .container form button{
-    width: 300px;
-    height: 40px;
+.reg .container form button {
+  width: 300px;
+  height: 40px;
 }
 
-.reg .container form input{
-    padding-left: 1rem;
-    font-size: 1rem;
+.reg .container form input {
+  padding-left: 1rem;
+  font-size: 1rem;
 }
 
 .reg .container form .pass1,
-.reg .container form .pass2{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+.reg .container form .pass2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .reg .container form .pass1 input,
-.reg .container form .pass2 input{
-    padding-right: 4.5rem;
+.reg .container form .pass2 input {
+  padding-right: 4.5rem;
 }
 
 .reg .container form .pass1 label,
-.reg .container form .pass2 label{
-    background-color: #8e8eff;
-    font-size: .8rem;
-    padding: .3rem .5rem;
-    border-radius: 20px;
-    position: absolute;
-    margin-right: .2rem;
-    color: #fff;
+.reg .container form .pass2 label {
+  background-color: #8e8eff;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 20px;
+  position: absolute;
+  margin-right: 0.2rem;
+  color: #fff;
 }
 
-.reg .container form button{
-    background-color: #4bdd4b;
-    font-size: 1rem;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #fff;
+.reg .container form button {
+  background-color: #4bdd4b;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
 }
 
-.div-no{
-    display: grid;
-    place-items: center;
-    width: 100vw;
-    height: 100svh;
+.div-no {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100svh;
 }
 
-.div-no .no-container{
-    background-color: #c2e2ff5f;
-    padding: 4rem 2rem;
-    max-width: 500px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    color: #8e8eff;
+.div-no .no-container {
+  background-color: #c2e2ff5f;
+  padding: 4rem 2rem;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: #8e8eff;
 }
 
-.div-no .no-container .btns{
+.div-no .no-container .btns {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+  margin-top: 4rem;
+}
+
+.div-no .no-container .btns a {
+  /* border: 1px solid #000; */
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.7rem 0;
+  text-decoration: none;
+  border-radius: 0.3rem;
+  color: #fff;
+}
+
+.div-no .no-container .btns .log {
+  background-color: #4bdd4b;
+}
+
+.div-no .no-container .btns .rg {
+  background-color: #8e8eff;
+}
+
+.home-container {
+  width: 100vw;
+  height: 100svh;
+  display: grid;
+  place-items: center;
+}
+
+.home {
+  background-color: #c2e2ff5f;
+  height: 80svh;
+  width: 70vw;
+  overflow: scroll;
+}
+
+.home .nav {
+  background-color: #c2e2ff88;
+  padding: 0rem 2rem;
+  height: 8svh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.home .nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.home .nav ul a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #8e8eff;
+}
+
+.home .nav ul .active::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #8e8eff;
+  animation: myan ease 0.5s;
+}
+
+@keyframes myan {
+  0% {
+    width: 0px;
+  }
+  100% {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 4rem;
-    margin-top: 4rem;
+  }
 }
 
-.div-no .no-container .btns a{
-    /* border: 1px solid #000; */
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: .7rem 0;
-    text-decoration: none;
-    border-radius: .3rem;
-    color: #fff;
+.home .profile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  height: 72svh;
 }
 
-.div-no .no-container .btns .log{
-    background-color: #4bdd4b;
+.home .profile > div {
+  border: 1px solid #000;
 }
 
-.div-no .no-container .btns .rg{
-    background-color: #8e8eff;
+.home .profile .info {
+  padding: 2rem 1rem;
+}
+
+.home .profile .info .img {
+  border: 1px solid #000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  height: 15rem;
+}
+
+.home .profile .info .img img {
+  border: 1px solid #000;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.home .profile .info .img .choices .btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+/* 
+.home .profile .info .img .choices .btns button,
+.home .profile .info .img .choices .btns a {
+  display: block;
+  text-decoration: none;
+  background: none;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 0.2rem 0.5rem;
+  border-radius: 15px;
+}
+
+.home .profile .info .img .choices .btns a {
+  background-color: #4bdd4b;
+}
+
+.home .profile .info .img .choices .btns button {
+  background-color: #f33636;
+} */
+
+.home .profile .info .img .choices .yn {
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.home .profile .info .img .choices .not-shown {
+  display: none;
+}
+
+.home .others {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.home .others .other {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #8e8eff;
+  border-radius: 5px;
+  padding: 1rem;
+  gap: 0.5rem;
+}
+
+.home .others .other img {
+  width: 90px;
+  height: 90px;
+  border: 1px solid #000;
 }

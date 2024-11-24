@@ -87,4 +87,30 @@ router.post("/login", async (req, res) => {
   }
 });
 
+router.get("/others", verify, async (req, res) => {
+  try {
+    const id = req.userID.id;
+    const myReq = (await db)
+      .query("SELECT * FROM users WHERE id != ?", [id])
+      .then((ms) => res.json({ others: ms[0] }));
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/adding", verify, async (req, res) => {
+  try {
+    const fromUser = req.userID.id;
+    const toUser = req.body.to;
+    (await db)
+      .query("INSERT INTO friend_requests(from_user, to_user) VALUES (?, ?)", [
+        fromUser,
+        toUser,
+      ])
+      .then((ms) => res.json({ message: "friend request sended" }));
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 export default router;
