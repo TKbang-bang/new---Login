@@ -6,16 +6,13 @@ function Others() {
   const [result, setResult] = useState([]);
 
   useEffect(() => {
-    const getResult = async () => {
-      const token = localStorage.getItem("token");
-      const myReq = await axios.get("http://localhost:3000/others", {
-        headers: {
-          Authorization: `${token}`,
-        },
+    try {
+      axios.get("http://localhost:3000/others").then((res) => {
+        setResult(res.data.data);
       });
-      setResult(myReq.data.others);
-    };
-    getResult();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   return (

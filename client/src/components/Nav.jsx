@@ -14,6 +14,9 @@ function Nav() {
         <li>
           <NavLink to={"/others"}>Other users</NavLink>
         </li>
+        <li>
+          <NavLink to={"/requests"}>Requests</NavLink>
+        </li>
       </ul>
     </nav>
   );

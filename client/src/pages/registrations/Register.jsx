@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -8,14 +8,6 @@ function Register() {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      navigate("/");
-    } else {
-      return;
-    }
-  }, []);
 
   const handlePass1 = (e) => {
     if (document.querySelector(".pass1 input").type == "password") {
@@ -37,7 +29,7 @@ function Register() {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (name == "" || email == "" || password == "" || password2 == "") {
       console.log("Rellena todos los campos");
@@ -45,17 +37,15 @@ function Register() {
       console.log("las contraseñas no coinciden");
     } else {
       try {
-        const myReq = await axios.post("http://localhost:3000/register", {
-          name,
-          email,
-          password,
-        });
-        if (myReq.data.log) {
-          localStorage.setItem("token", "Bearer " + myReq.data.token);
-          navigate("/");
-        } else {
-          console.log("Unexpected error", "Please, try again");
-        }
+        axios
+          .post("http://localhost:3000/register", {
+            name,
+            email,
+            password,
+          })
+          .then((res) => {
+            res.data.log ? navigate("/") : console.log(res.data.message);
+          });
       } catch (error) {
         console.log(error);
       }

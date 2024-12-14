@@ -28,30 +28,24 @@ function Login() {
     }
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("token")) {
-      navigate("/");
-    } else {
-      return;
-    }
-  }, []);
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (email == "" || password == "" || password2 == "") {
       console.log("Rellena todos los campos");
     } else if (password != password2) {
       console.log("las contraseñas no coinciden");
     } else {
-      const myReq = await axios.post("http://localhost:3000/login", {
-        email,
-        password,
-      });
-      if (myReq.data.log) {
-        localStorage.setItem("token", "Bearer " + myReq.data.token);
-        navigate("/");
-      } else {
-        console.log("Unexpecting error", "Please, try again");
+      try {
+        axios
+          .post("http://localhost:3000/login", {
+            email,
+            password,
+          })
+          .then((res) => {
+            res.data.log ? navigate("/") : console.log(req.data.message);
+          });
+      } catch (error) {
+        console.log(error);
       }
     }
   };
